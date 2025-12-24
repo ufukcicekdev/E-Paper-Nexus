@@ -1,0 +1,17 @@
+# Arduino IDE geçici dosyaları
+build/
+libraries/
+sketch_dec24a/build/
+*.elf
+*.map
+
+# VS Code ayarları
+.vscode/
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db
+
+# Node.js (Railway için gerekirse)
+node_modules/
+npm-debug.log
