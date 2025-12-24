@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BilgiEkranı | Kurulum Rehberi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #00d1b2; --bg: #121212; --card: #1e1e1e; --text: #ffffff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
+        .guide-container { max-width: 600px; margin: 0 auto; }
+        .card { background: var(--card); padding: 25px; border-radius: 20px; border: 1px solid #333; margin-bottom: 20px; }
+        h1, h2 { color: var(--primary); }
+        .step { display: flex; gap: 15px; margin-bottom: 20px; }
+        .step-num { background: var(--primary); color: #000; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #2a2a2a; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #444; font-size: 14px; }
+        .back-btn { color: var(--primary); text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="guide-container">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Panele Dön</a>
+        
+        <div class="card">
+            <h1><i class="fas fa-tools"></i> Kurulum Rehberi</h1>
+            <p>BilgiEkranı donanımını hazırlamak için aşağıdaki adımları sırasıyla takip edin.</p>
+        </div>
+
+        <div class="card">
+            <h2>1. Kablo Bağlantıları</h2>
+            <p>E-Kağıt ekranınızı ESP32-C3 pinlerine şu şekilde bağlayın:</p>
+            <table>
+                <tr><th>Ekran Pini</th><th>ESP32-C3 GPIO</th></tr>
+                <tr><td>BUSY</td><td>GPIO 2</td></tr>
+                <tr><td>RST (Reset)</td><td>GPIO 3</td></tr>
+                <tr><td>DC (Data/Command)</td><td>GPIO 4</td></tr>
+                <tr><td>CS (Chip Select)</td><td>GPIO 5</td></tr>
+                <tr><td>CLK (SPI Clock)</td><td>GPIO 6</td></tr>
+                <tr><td>DIN (SPI MOSI)</td><td>GPIO 7</td></tr>
+                <tr><td>VCC</td><td>3.3V</td></tr>
+                <tr><td>GND</td><td>GND</td></tr>
+                <tr style="color: var(--primary);"><td>Hoparlör (+)</td><td>GPIO 1</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>2. Bilgisayar Bağlantısı</h2>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div><b>BOOT Modu:</b> ESP32 üzerindeki "BOOT" tuşuna basılı tutun.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div><b>Kablo:</b> Tuşu bırakmadan USB kablosunu takın. 2 saniye sonra tuşu bırakabilirsiniz.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div><b>Data Kablosu:</b> Kullandığınız kablonun "Data" kablosu olduğundan emin olun (Sadece şarj kabloları çalışmaz).</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

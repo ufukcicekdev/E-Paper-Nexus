@@ -1,0 +1,22 @@
+{
+  "name": "BilgiEkranı",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        {
+          "path": "sketch_dec24a/build/esp32.esp32.esp32c3/sketch_dec24a.ino.bootloader.bin",
+          "offset": 0
+        },
+        {
+          "path": "sketch_dec24a/build/esp32.esp32.esp32c3/sketch_dec24a.ino.partitions.bin",
+          "offset": 32768
+        },
+        {
+          "path": "sketch_dec24a/build/esp32.esp32.esp32c3/sketch_dec24a.ino.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}
