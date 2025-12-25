@@ -164,10 +164,41 @@ void drawDetail() {
         if (currentMenu == MENU_SAAT) {
             struct tm timeinfo;
             if(getLocalTime(&timeinfo)) {
-                char buffer[10]; strftime(buffer, 10, "%H:%M", &timeinfo);
-                printCentered("SAAT", 20, 2); 
-                printCentered(buffer, 80, 5);
-            } else { printCentered("WiFi Bekleniyor", 60, 2); }
+                // 1. ÜST BİLGİ: Şehir İsmi (Küçük ve şık)
+                display.setTextSize(1);
+                String konum = "- " + temizle(city) + " -";
+                // Manuel merkezleme: 296px genişlik / 2 = 148. 
+                // Karakter başına ~6px, "ISTANBUL,TR" ~11 karakter = 66px. (148 - 33 = 115)
+                printCentered(konum.c_str(), 15, 1);
+
+                // 2. ORTA KISIM: Saat (Hassas Manuel Hizalama)
+                // Font Size 6 için manuel X, Y koordinatları
+                char sBuffer[6]; 
+                strftime(sBuffer, 6, "%H:%M", &timeinfo);
+                
+                display.setTextSize(6);
+                // 2.9" Ekran (296x128) için Size 6 Saat Ortalaması:
+                // X: 55 (Sol boşluk), Y: 45 (Üst boşluk)
+                display.setCursor(55, 45); 
+                display.print(sBuffer);
+
+                // 3. ALT KISIM: Tarih ve Gün Bilgisi
+                display.drawFastHLine(40, 105, display.width()-80, GxEPD_BLACK); // Estetik ince çizgi
+
+                const char* gunler[] = {"PAZAR", "PAZARTESI", "SALI", "CARSAMBA", "PERSEMBE", "CUMA", "CUMARTESI"};
+                char tBuffer[40];
+                sprintf(tBuffer, "%02d.%02d.%d | %s", 
+                        timeinfo.tm_mday, 
+                        timeinfo.tm_mon + 1, 
+                        timeinfo.tm_year + 1900, 
+                        gunler[timeinfo.tm_wday]);
+
+                // Tarih yazısını en alta ortalayarak bas
+                printCentered(tBuffer, 112, 1);
+
+            } else { 
+                printCentered("WiFi BEKLENIYOR...", 60, 2); 
+            }
         }
         else if (currentMenu == MENU_HAVA) {
             // 1. Üst Kısım: Şehir İsmi
